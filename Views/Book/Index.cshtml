@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Books.Models.Book>
+
+<h2>Danh sách sách</h2>
+<a href="/Book/Create" class="btn btn-primary">Thêm sách mới</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Tựa sách</th>
+            <th>Tác giả</th>
+            <th>Mô tả</th>
+            <th>Hình ảnh</th>
+            <th>Giá</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Id</td>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.Description</td>
+                <td><img src="@book.Image" alt="@book.Title" width="100" /></td>
+                <td>@book.Price</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@book.Id" class="btn btn-info">Chi tiết</a>
+                    <a asp-action="Edit" asp-route-id="@book.Id" class="btn btn-warning">Sửa</a>
+                    <a asp-action="Delete" asp-route-id="@book.Id" class="btn btn-danger">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
